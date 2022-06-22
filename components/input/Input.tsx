@@ -15,8 +15,9 @@ const InputWrap = () => {
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const taskWrap = {
-      id: Math.random(),
+      id: Date.now() + Math.random(),
       task: value,
+      date: Date.now(),
     }
     addTask(taskWrap)
     setValue('')
