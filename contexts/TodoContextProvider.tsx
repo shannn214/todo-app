@@ -19,22 +19,18 @@ const TodoContext = createContext<TodoContextType | null>(null)
 
 export const TodoContextProvider = ({ children }: TodoContextProviderProps) => {
   const [todos, setTodos] = useState<ITodo[]>([])
-  const [db, setDb] = useState<IDBPDatabase<ITodoDatabase> | undefined>(undefined)
 
   useEffect(() => {
+    let db: IDBPDatabase<ITodoDatabase> | undefined
     const init = async () => {
-      const _db = await initDB()
-      setDb(_db)
+      db = await initDB()
       handleSetTodo()
     }
     init()
-  }, [])
-
-  useEffect(() => {
     return () => {
       db && db.close()
     }
-  }, [db])
+  }, [])
 
   const handleSetTodo = async () => {
     const res = (await getTodo()) as ITodo[]
