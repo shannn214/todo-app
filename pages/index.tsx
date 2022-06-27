@@ -1,16 +1,14 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 
 import Container from '../components/container/Container'
 import Header from '../components/header/Header'
-import Input from '../components/input/Input'
-import ListWrap from '../components/list/ListWrap'
+import TodoInput from '../components/input/TodoInput'
+import TodoList from '../components/list/TodoList'
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>TODO App</title>
         <meta name="description" content="Simple TODO App" />
@@ -18,8 +16,8 @@ const Home: NextPage = () => {
       </Head>
       <Container>
         <Header />
-        <Input />
-        <ListWrap />
+        <TodoInput />
+        <TodoList />
       </Container>
     </div>
   )

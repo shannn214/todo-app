@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import dayjs from 'dayjs'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
@@ -60,7 +60,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, isEdit, setEditItem, handleSe
     setValue(title)
     setEditItem(id)
   }
-  console.log(id)
+
   const hasError = inputError !== null
 
   return (

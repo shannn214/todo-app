@@ -1,14 +1,13 @@
-// import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import CssBaseline from '@mui/material/CssBaseline'
-import { ContextProvider } from '../contexts/ContextProvider'
+import { TodoContextProvider } from '../contexts/TodoContextProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ContextProvider>
+    <TodoContextProvider>
       <CssBaseline />
       <Component {...pageProps} />
-    </ContextProvider>
+    </TodoContextProvider>
   )
 }
 
