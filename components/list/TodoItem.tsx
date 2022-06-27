@@ -63,45 +63,42 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, isEdit, setEditItem, handleSe
 
   const hasError = inputError !== null
 
-  return (
+  return isEdit ? (
     <Card
       sx={{ width: '100%', minHeight: '50px', bgcolor: '#f5f5f5', px: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
     >
       <CardContent sx={{ p: 1 }}>
-        {isEdit ? (
-          <FormControl error={hasError} fullWidth>
-            <OutlinedInput id="task-input" type="text" size="small" fullWidth autoFocus value={value} onChange={handleOnChange} />
-            <FormHelperText>{inputError}</FormHelperText>
-          </FormControl>
-        ) : (
-          <>
-            <Typography variant="h6">{title}</Typography>
-            <Typography variant="subtitle2" color="#525252">
-              {dayjs(date).format('YYYY-MM-DD HH:mm')}
-            </Typography>
-          </>
-        )}
+        <FormControl error={hasError} fullWidth>
+          <OutlinedInput id="task-input" type="text" size="small" fullWidth autoFocus value={value} onChange={handleOnChange} />
+          <FormHelperText>{inputError}</FormHelperText>
+        </FormControl>
       </CardContent>
       <CardActions>
-        {isEdit ? (
-          <>
-            <IconButton aria-label="check" onClick={handleUpdateTodo}>
-              <CheckIcon />
-            </IconButton>
-            <IconButton aria-label="cancel" onClick={() => handleToggleEdit(null)}>
-              <CancelIcon />
-            </IconButton>
-          </>
-        ) : (
-          <>
-            <IconButton aria-label="edit" onClick={() => handleToggleEdit(id)}>
-              <EditOutlinedIcon />
-            </IconButton>
-            <IconButton aria-label="delete" onClick={() => handleDeleteTodo(id)}>
-              <DeleteOutlined />
-            </IconButton>
-          </>
-        )}
+        <IconButton aria-label="check" onClick={handleUpdateTodo}>
+          <CheckIcon />
+        </IconButton>
+        <IconButton aria-label="cancel" onClick={() => handleToggleEdit(null)}>
+          <CancelIcon />
+        </IconButton>
+      </CardActions>
+    </Card>
+  ) : (
+    <Card
+      sx={{ width: '100%', minHeight: '50px', bgcolor: '#f5f5f5', px: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+    >
+      <CardContent sx={{ p: 1 }}>
+        <Typography variant="h6">{title}</Typography>
+        <Typography variant="subtitle2" color="#525252">
+          {dayjs(date).format('YYYY-MM-DD HH:mm')}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <IconButton aria-label="edit" onClick={() => handleToggleEdit(id)}>
+          <EditOutlinedIcon />
+        </IconButton>
+        <IconButton aria-label="delete" onClick={() => handleDeleteTodo(id)}>
+          <DeleteOutlined />
+        </IconButton>
       </CardActions>
     </Card>
   )
